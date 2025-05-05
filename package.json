@@ -1,0 +1,22 @@
+{
+  "name": "project-counter-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec bun run index.ts",
+    "build": "bun build --compile --minify --sourcemap ./index.ts ./worker.ts --outfile project-counter-ui && bun run ./exe_enhancement/hidecmd.ts ./project-counter-ui.exe ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bun-types": "^1.2.12",
+    "webview-bun": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "nodemon": "^3.1.10"
+  }
+}
