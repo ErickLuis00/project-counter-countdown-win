@@ -1,6 +1,8 @@
-# Project Counter UI
+# TIMER COM PRAZO PARA ENTREGA DE PROJETOS
+![image](https://github.com/user-attachments/assets/f72470e8-6d36-4b81-8777-615c10ffc2fb)
 
-A simple webview application built with Bun and webview-bun.
+
+A simple webview application built with Bun and webview-bun. 
 
 
 ## Prerequisites
