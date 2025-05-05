@@ -1,69 +1,53 @@
-# TIMER COM PRAZO PARA ENTREGA DE PROJETOS
-![image](https://github.com/user-attachments/assets/f72470e8-6d36-4b81-8777-615c10ffc2fb)
+# Rastreador de Projetos com Prazo
+
+ ![image](https://github.com/user-attachments/assets/f72470e8-6d36-4b81-8777-615c10ffc2fb)
+
+Uma aplicação simples com webview feita com Bun e webview-bun para rastrear o tempo restante para a entrega de projetos.
+
+## Pré-requisitos
+
+* **Bun:** [Instalar Bun](https://bun.sh/docs/installation)
+* **PNPM:** `npm install -g pnpm`
+* **Windows:** [Runtime Microsoft Edge WebView2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section) (geralmente pré-instalado no Windows 11).
+
+## Configuração
 
 
-A simple webview application built with Bun and webview-bun. 
-
-
-## Prerequisites
-
-
-* Bun: [Install Bun](https://bun.sh/docs/installation)
-* PNPM: `npm install -g pnpm`
-* **Windows:** [Microsoft Edge WebView2 runtime](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section) (usually pre-installed on Windows 11).
-
-## Setup
-
-
-1. Install dependencies:
+1. Instale as dependências:
 
    ```bash
-   pnpm install
+   bun install
    ```
 
-## Running the Application (Development)
+## Executando a Aplicação (Desenvolvimento)
 
-This command starts the webview, which in turn starts the background server worker.
-
-```bash
-pnpm start
-```
-
-Or directly:
+Este comando inicia a aplicação em modo de desenvolvimento com recarregamento automático (`nodemon`).
 
 ```bash
-bun run index.ts
+bun dev
 ```
 
-## Building a Single Executable
+## Compilando o Executável (.exe)
 
-This compiles both the main application (`index.ts`) and the server worker (`worker.ts`) into a single executable.
+Este comando compila a aplicação principal (`index.ts`) e o worker do servidor (`worker.ts`) em um único executável `.exe`. Ele também esconde a janela do console e adiciona o ícone (`icon.ico`) automaticamente (requer `rcedit-x64.exe` na pasta `exe_enhancement`).
 
 ```bash
-pnpm run build
+bun run build
 ```
 
-Or directly:
+Após a compilação, o arquivo `project-counter-ui.exe` estará na pasta raiz do projeto.
 
-```bash
-bun build --compile --minify --sourcemap ./index.ts ./worker.ts --outfile project-counter-ui
-```
+## Abrir Automaticamente ao Iniciar o Windows
 
-### Hiding the Console Window (Windows)
+Para fazer a aplicação iniciar automaticamente quando você ligar o computador, siga estes passos:
 
 
-1. Download `hidecmd.bat` from the [webview-bun repository](https://github.com/tr1ckydev/webview-bun).
-2. Run `hidecmd.bat` and provide the path to your generated `.exe` file when prompted.
+1. **Encontre o Executável:** Localize o arquivo `project-counter-ui.exe` que foi gerado pelo comando `pnpm run build`.
+2. **Crie um Atalho:** Clique com o botão direito no arquivo `project-counter-ui.exe` e selecione "Criar atalho".
+3. **Abra a Pasta de Inicialização:**
+   * Pressione as teclas `Win` + `R` juntas para abrir a caixa "Executar".
+   * Digite `shell:startup` e pressione Enter. Isso abrirá a pasta de inicialização do seu usuário atual.
+     *(Opcional: Para todos os usuários, digite* `shell:common startup`, mas isso requer permissão de administrador).
+4. **Mova o Atalho:** Arraste ou recorte e cole o atalho que você criou no passo 2 para dentro da pasta de inicialização que você abriu no passo 3.
 
-
-# OPEN AUTOMATICALLY WHEN WINDOWS OPEN
-
-
-1. Windows Startup Folder Path: The path varies slightly depending on the Windows version and user profile, but it's typically accessed via environment variables:
-
-* For the current user: %APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup
-
-
-* For all users (requires admin): %ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup
-
-
+Pronto! Na próxima vez que você iniciar o Windows, a aplicação `project-counter-ui` deverá abrir automaticamente.
